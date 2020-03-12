@@ -14,7 +14,8 @@ StatusBox provides simple REST API for submiting created jobs, events and status
 4. Include your secret token into every HTTP request to StatusBox as an `Authorization` header with `ApiKey` schema.
 
 ## Creating new job
-All you have to do is to send a POST HTTP request to StatusBox API after a job creation. You'll get an integer dynamic id for created job in the response from API so you can log events attached to that job or update its status. Here is an example with `curl`:
+All you have to do is to send a POST HTTP request to StatusBox API after a job creation. You'll get an integer dynamic id for created job in the response from API 
+and `actions` object with ready-to-use links so you can log events attached to that job or update status. Here is an example with `curl`:
 
 *Request*
 ```bash
@@ -30,7 +31,16 @@ curl --request POST 'https://g.statusbox.io/api/jobs/' \
 
 *Response*
 ```json
-{"status":"ok","id":1}
+{
+    "status": "ok",
+    "id": 1,
+    "actions": {
+        "complete": "https://g.statusbox.io/jobs/1/complete",
+        "fail": "https://g.statusbox.io/jobs/1/fail",
+        "cancel": "https://g.statusbox.io/jobs/1/cancel",
+        "log": "https://g.statusbox.io/jobs/1"
+    }
+}
 ```
 
 | Parameter name   | Required | Type   | Description                                                             |

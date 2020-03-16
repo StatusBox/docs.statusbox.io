@@ -38,7 +38,7 @@ curl --request POST 'https://g.statusbox.io/api/jobs/' \
         "complete": "https://g.statusbox.io/jobs/1/complete",
         "fail": "https://g.statusbox.io/jobs/1/fail",
         "cancel": "https://g.statusbox.io/jobs/1/cancel",
-        "log": "https://g.statusbox.io/jobs/1"
+        "log": "https://g.statusbox.io/jobs/1/event"
     }
 }
 ```
@@ -54,7 +54,7 @@ Now as we have job id, we can send some log messages that will be attached to it
 
 *Request*
 ```bash
-curl --location --request POST 'https://g.statusbox.io/jobs/:jobId' \
+curl --location --request POST 'https://g.statusbox.io/jobs/:jobId/event' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: ApiKey YourGeneratedApiSecret' \
 --data-raw '{ "message": "Job has been created" }'

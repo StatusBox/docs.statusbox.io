@@ -13,13 +13,13 @@ StatusBox provides simple REST API for submiting created jobs, events and status
 3. Create new secret by clicking on **generate new secret**.
 4. Include your secret token into every HTTP request to StatusBox as an `Authorization` header with `ApiKey` schema.
 
-## Creating new job
+## Tracking new job
 All you have to do is to send a POST HTTP request to StatusBox API after a job creation. You'll get an integer dynamic id for created job in the response from API 
 and `actions` object with ready-to-use links so you can log events attached to that job or update status. Here is an example with `curl`:
 
 *Request*
 ```bash
-curl --request POST 'https://g.statusbox.io/api/jobs/' \
+curl --request POST 'https://g.statusbox.io/jobs/' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: ApiKey YourGeneratedApiSecret' \
 --data-raw '{
